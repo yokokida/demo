@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'footer.dart';
 import 'header.dart';
+import 'root.dart';
 
 void main() {
   runApp(App());
@@ -11,11 +11,11 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: Header(),
-        body: Center(child: Text("オラオラオラオラ")),
-        bottomNavigationBar: Footer(),
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primaryColor: Colors.blueGrey[900],
       ),
+      home: RootWidget(),
     );
   }
 }
