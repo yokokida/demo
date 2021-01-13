@@ -1,109 +1,91 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'pages/page_home.dart';
+import 'pages/page_top.dart';
 import 'pages/page_news.dart';
 import 'pages/page_talk.dart';
 import 'pages/page_timeline.dart';
 import 'pages/page_wallet.dart';
 
 
-class RootWidget extends StatefulWidget {
-  RootWidget({Key key}) : super(key: key);
-
+class HomeScreen extends StatefulWidget {
   @override
-  _RootWidgetState createState() => _RootWidgetState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _RootWidgetState extends State<RootWidget> {
-  int _selectedIndex = 0;
-  final _bottomNavigationBarItems = <BottomNavigationBarItem>[];
-
-  static const _footerIcons = [
-    Icons.home,
-    Icons.textsms,
-    Icons.access_time,
-    Icons.content_paste,
-    Icons.work,
-  ];
-
-  static const _footerItemNames = [
-    'ホーム',
-    'トーク',
-    'タイムライン',
-    'ニュース',
-    'ウォレット',
-  ];
-
-  // === 追加部分 ===
-  var _routes = [
-    Home(),
-    Talk(),
-    TimeLine(),
-    News(),
-    Wallet(),
-  ];
-  // ==============
+class _HomeScreenState extends State<HomeScreen> {
+  // オンタップのロジック
+  List<Widget> _pages;
+  int _currentIndex = 0;
 
   @override
   void initState() {
+    _pages = [
+      Top(),
+      News(),
+      Talk(),
+      TimeLine(),
+      Wallet(),
+    ];
     super.initState();
-    _bottomNavigationBarItems.add(_UpdateActiveState(0));
-    for (var i = 1; i < _footerItemNames.length; i++) {
-      _bottomNavigationBarItems.add(_UpdateDeactiveState(i));
-    }
   }
 
-  /// インデックスのアイテムをアクティベートする
-  BottomNavigationBarItem _UpdateActiveState(int index) {
-    return BottomNavigationBarItem(
-        icon: Icon(
-          _footerIcons[index],
-          color: Colors.black87,
-        ),
-        title: Text(
-          _footerItemNames[index],
-          style: TextStyle(
-            color: Colors.black87,
-          ),
-        )
-    );
-  }
-
-  BottomNavigationBarItem _UpdateDeactiveState(int index) {
-    return BottomNavigationBarItem(
-        icon: Icon(
-          _footerIcons[index],
-          color: Colors.black26,
-        ),
-        title: Text(
-          _footerItemNames[index],
-          style: TextStyle(
-            color: Colors.black26,
-          ),
-        )
-    );
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _bottomNavigationBarItems[_selectedIndex] =
-          _UpdateDeactiveState(_selectedIndex);
-      _bottomNavigationBarItems[index] = _UpdateActiveState(index);
-      _selectedIndex = index;
-    });
-  }
-
+  // 見た目
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _routes.elementAt(_selectedIndex),
+      body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // これを書かないと3つまでしか表示されない
-        items: _bottomNavigationBarItems,
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+        // オンタップ属性
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        // 各ページのボタン
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text('TOP'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            title: Text('TOP'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.ac_unit),
+            title: Text('TOP'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.mail),
+            title: Text('TOP'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            title: Text('TOP'),
+          ),
+        ],
+        // デザイン
+        type: BottomNavigationBarType.fixed,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        selectedItemColor: Colors.white,
+        backgroundColor: Colors.orange,
+        iconSize: 24.0,
       ),
     );
   }
 }
+
+class LoginScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        // todo
+      ),
+    );
+  }
+}
+

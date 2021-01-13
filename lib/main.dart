@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'header.dart';
 import 'root.dart';
 
 void main() {
@@ -13,9 +12,9 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: Colors.blueGrey[900],
+        primaryColor: Colors.orange,
       ),
-      home: RootWidget(),
+      home: HomeScreen(),
     );
   }
 }
