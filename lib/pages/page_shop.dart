@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TimeLine extends StatelessWidget { // <- (※1)
+class Shop extends StatelessWidget { // <- (※1)
   @override
   Widget build(BuildContext context) {
     return Scaffold(

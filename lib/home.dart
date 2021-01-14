@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'pages/page_top.dart';
-import 'pages/page_news.dart';
-import 'pages/page_talk.dart';
-import 'pages/page_timeline.dart';
-import 'pages/page_wallet.dart';
+import 'pages/page_profile.dart';
+import 'pages/page_favorite.dart';
+import 'pages/page_chat.dart';
+import 'pages/page_requirement.dart';
+import 'pages/page_shop.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -14,18 +14,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // オンタップのロジック
   List<Widget> _pages;
   int _currentIndex = 0;
 
   @override
   void initState() {
     _pages = [
-      Top(),
-      News(),
+      Profile(),
+      Favorite(),
+      Requirement(),
       Talk(),
-      TimeLine(),
-      Wallet(),
+      Shop(),
     ];
     super.initState();
   }
@@ -46,15 +45,15 @@ class _HomeScreenState extends State<HomeScreen> {
         // 各ページのボタン
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.account_circle),
             title: Text('TOP'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.favorite),
             title: Text('TOP'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.ac_unit),
+            icon: Icon(Icons.assignment),
             title: Text('TOP'),
           ),
           BottomNavigationBarItem(
@@ -62,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
             title: Text('TOP'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
+            icon: Icon(Icons.card_giftcard),
             title: Text('TOP'),
           ),
         ],

@@ -1,22 +1,18 @@
-import 'package:demo/pages/screen_chat.dart';
+import 'package:demo/screen/screen_chat.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 
 class Tile extends StatelessWidget {
-  // == 追加 ========
   IconData icon;
   String username;
   String message;
-  // ===============
 
-  // == 追加 ========
   Tile({IconData icon, String username, String message}) {
     this.icon = icon;
     this.username = username;
     this.message = message;
   }
-  // ===============
 
   @override
   Widget build(BuildContext context) {
