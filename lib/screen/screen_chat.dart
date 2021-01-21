@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Chat extends StatelessWidget {
-  // == 追加　===============
-  String username;
 
+  String username;
   Chat({String username}) {
     this.username = username;
   }
-  // =======================
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          this.username ?? '', // <- 追加！
+          this.username ?? '',
         ),
-        // == ヘッダーを追加　===============
         actions: [
           Padding(
             padding: const EdgeInsets.all(4.0),
@@ -39,7 +37,6 @@ class Chat extends StatelessWidget {
                 onPressed: () => {},
               )),
         ],
-        // ===============================
       ),
       body: Center(child: Text("Chat")),
       backgroundColor: Colors.cyan,

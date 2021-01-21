@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 
+// ignore: must_be_immutable
 class Tile extends StatelessWidget {
   IconData icon;
   String username;
@@ -23,11 +24,11 @@ class Tile extends StatelessWidget {
         color: Colors.white,
         child: ListTile(
           leading: CircleAvatar(
-            child: Icon(this.icon), // <- 追加：アイコンの設定
+            child: Icon(this.icon),
             backgroundColor: Colors.pink,
           ),
-          title: Text(this.username), // <- 追加：ユーザ名の設定
-          subtitle: Text(this.message), // <- 追加：メッセージの設定
+          title: Text(this.username),
+          subtitle: Text(this.message),
           onTap: () => {
             Navigator.push(
                 context,
